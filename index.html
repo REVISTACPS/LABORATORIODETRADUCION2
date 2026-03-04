@@ -35,22 +35,6 @@ body{
 }
 
 /* =========================
-   IMAGEN SUPERIOR FULL WIDTH
-========================= */
-.top-image{
-    width:100%;
-    margin:0;
-    padding:0;
-    overflow:hidden;
-}
-
-.top-image img{
-    width:100%;
-    height:auto;
-    display:block;
-}
-
-/* =========================
    BOTÓN MODO OSCURO
 ========================= */
 .theme-toggle{
@@ -78,93 +62,302 @@ body{
 /* =========================
    CONTENEDOR NEUROELITE
 ========================= */
+
 .top-access{
-    background:#16a34a;
-    padding:15px;
+    position:relative;
+    padding:40px 20px;
     text-align:center;
+
+    background:linear-gradient(135deg,#0f172a,#1e293b);
+
+    overflow:hidden;
 }
 
-.top-access button{
-    background:white;
-    color:#16a34a;
-    border:none;
-    padding:10px 22px;
-    border-radius:25px;
-    font-weight:700;
-    cursor:pointer;
-    transition:0.3s;
+/* efecto aura cósmica */
+.top-access::before{
+    content:"";
+    position:absolute;
+    inset:-50%;
+    background:
+        radial-gradient(circle at 30% 40%,rgba(34,211,238,0.35),transparent 40%),
+        radial-gradient(circle at 70% 60%,rgba(168,85,247,0.35),transparent 40%),
+        radial-gradient(circle at 50% 20%,rgba(16,185,129,0.35),transparent 40%);
+    filter:blur(80px);
+    animation:cosmicMove 12s linear infinite;
 }
 
-.top-access button:hover{
-    transform:scale(1.05);
+@keyframes cosmicMove{
+    0%{transform:rotate(0deg)}
+    100%{transform:rotate(360deg)}
+}
+
+/* texto */
+.access-text{
+    position:relative;
+    color:white;
+    font-weight:600;
+    font-size:1.1rem;
+    margin-bottom:18px;
+    letter-spacing:0.4px;
 }
 
 /* =========================
-   HEADER
+   BOTÓN FUTURISTA CRISTAL
 ========================= */
+
+.access-btn{
+
+    position:relative;
+
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+
+    border:1px solid rgba(255,255,255,0.25);
+
+    color:white;
+    font-weight:700;
+    font-size:1rem;
+
+    padding:16px 36px;
+    border-radius:50px;
+
+    cursor:pointer;
+
+    letter-spacing:0.5px;
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,0.5),
+        inset 0 1px 0 rgba(255,255,255,0.4);
+
+    transition:all .35s ease;
+
+    z-index:1;
+}
+
+/* brillo interior futurista */
+.access-btn::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:inherit;
+
+    background:linear-gradient(
+        120deg,
+        transparent 30%,
+        rgba(255,255,255,0.35),
+        transparent 70%
+    );
+
+    opacity:0;
+    transition:.4s;
+}
+
+/* hover futurista */
+.access-btn:hover{
+
+    transform:translateY(-6px) scale(1.05);
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,0.6),
+        0 0 20px rgba(34,211,238,0.6),
+        inset 0 1px 0 rgba(255,255,255,0.6);
+}
+
+.access-btn:hover::before{
+    opacity:1;
+}
+
+/* click */
+.access-btn:active{
+    transform:translateY(2px);
+}
+
+/* =========================
+   PULSO ENERGÍA
+========================= */
+
+.access-btn{
+    animation:energyPulse 3s infinite;
+}
+
+@keyframes energyPulse{
+    0%{box-shadow:0 0 0 0 rgba(34,211,238,0.5);}
+    70%{box-shadow:0 0 0 14px rgba(34,211,238,0);}
+    100%{box-shadow:0 0 0 0 rgba(34,211,238,0);}
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width:768px){
+
+    .access-text{
+        font-size:1rem;
+    }
+
+    .access-btn{
+        padding:14px 28px;
+        font-size:.95rem;
+    }
+
+}
+
+@media (max-width:480px){
+
+    .access-btn{
+        width:100%;
+        max-width:320px;
+    }
+
+}
+
+/* =========================
+   HEADER FUTURISTA
+========================= */
+
 .header-container{
-    background:linear-gradient(135deg,#f59e0b,#ea580c);
-    padding:40px 20px;
+    position:relative;
+    background:linear-gradient(135deg,#f59e0b,#ea580c,#fb923c);
+    padding:70px 20px;
     text-align:center;
+    overflow:hidden;
+}
+
+/* aura energética */
+.header-container::before{
+    content:"";
+    position:absolute;
+    inset:-50%;
+
+    background:
+        radial-gradient(circle at 20% 30%,rgba(255,255,255,0.25),transparent 40%),
+        radial-gradient(circle at 80% 70%,rgba(255,255,255,0.2),transparent 40%);
+
+    filter:blur(80px);
+    animation:headerEnergy 14s linear infinite;
+}
+
+@keyframes headerEnergy{
+    from{transform:rotate(0deg)}
+    to{transform:rotate(360deg)}
 }
 
 .header-container h1{
+    position:relative;
     margin:0;
     color:white;
-    font-size:2rem;
+    font-size:2.3rem;
+    letter-spacing:0.5px;
+    text-shadow:0 4px 18px rgba(0,0,0,0.35);
 }
 
 /* =========================
    GRID
 ========================= */
+
 .container{
     max-width:1100px;
     margin:auto;
-    padding:40px 20px;
+    padding:50px 20px;
+
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:25px;
+    gap:28px;
+
     position:relative;
     z-index:1;
 }
 
-/* Fondo futurista en modo oscuro */
+/* =========================
+   FONDO FUTURISTA DARK MODE
+========================= */
+
 body.dark .container{
     background:url("https://i.ibb.co/Vc3njsty/Fondo-de-pantalla-futurista-9.jpg") center/cover no-repeat;
-    border-radius:25px;
-    padding:60px 30px;
+    border-radius:30px;
+    padding:70px 35px;
 }
 
-/* Overlay elegante para mejorar contraste */
+/* overlay elegante */
 body.dark .container::before{
     content:"";
     position:absolute;
     inset:0;
-    background:rgba(0,0,0,0.65);
-    border-radius:25px;
+    background:rgba(0,0,0,0.7);
+    border-radius:30px;
     z-index:-1;
 }
 
+/* =========================
+   TARJETAS FUTURISTAS
+========================= */
+
 .card{
-    background:var(--card);
-    border-radius:16px;
-    padding:35px 20px;
-    text-align:center;
-    transition:0.3s ease;
+
     position:relative;
-    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+
+    background:var(--card);
+
+    border-radius:18px;
+
+    padding:38px 20px;
+
+    text-align:center;
+
+    transition:.35s ease;
+
     font-weight:600;
     font-size:1.1rem;
+
+    box-shadow:
+        0 12px 28px rgba(0,0,0,0.1),
+        inset 0 1px 0 rgba(255,255,255,0.4);
+
+    overflow:hidden;
 }
 
+/* glow interno suave */
+.card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:linear-gradient(
+        120deg,
+        transparent 30%,
+        rgba(255,255,255,0.35),
+        transparent 70%
+    );
+
+    opacity:0;
+    transition:.4s;
+}
+
+/* hover elegante */
+
 .card:hover{
-    transform:translateY(-6px);
+
+    transform:translateY(-10px) scale(1.03);
+
+    box-shadow:
+        0 20px 40px rgba(0,0,0,0.25),
+        0 0 18px rgba(59,130,246,0.35);
+}
+
+.card:hover::before{
+    opacity:1;
 }
 
 .card a{
     text-decoration:none;
     color:var(--text);
 }
+
+/* =========================
+   TARJETAS GRATIS
+========================= */
 
 .free{
     border:2px solid #22c55e;
@@ -175,94 +368,315 @@ body.dark .container::before{
     color:white;
 }
 
+/* =========================
+   TARJETAS NEUROELITE
+========================= */
+
 .neuroelite{
+
     border:2px solid var(--accent);
+
     position:relative;
+
     overflow:hidden;
 }
 
-.neuroelite.locked::after{
-    content:"🔒 Acceso NEUROELITE";
+/* aura premium */
+.neuroelite::before{
+
+    content:"";
+
     position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.75);
-    color:white;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-weight:700;
+    inset:-40%;
+
+    background:
+        radial-gradient(circle,rgba(251,191,36,0.35),transparent 60%);
+
+    opacity:.4;
+
+    animation:eliteAura 10s linear infinite;
 }
 
-.badge{
-    position:absolute;
-    top:12px;
-    right:12px;
-    font-size:0.7rem;
-    background:var(--accent);
-    color:black;
-    padding:4px 8px;
-    border-radius:20px;
-    font-weight:700;
+@keyframes eliteAura{
+
+    from{transform:rotate(0deg)}
+    to{transform:rotate(360deg)}
 }
 
 /* =========================
-   SECCIÓN INFERIOR NARANJA
+   BLOQUEO NEUROELITE
 ========================= */
-.bottom-section{
-    background:linear-gradient(135deg,#f59e0b,#ea580c);
-    margin-top:80px;
-    padding:60px 20px;
+
+.neuroelite.locked::after{
+
+    content:"🔒 Acceso NEUROELITE";
+
+    position:absolute;
+    inset:0;
+
+    background:rgba(0,0,0,0.78);
+
+    color:white;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-weight:700;
+
+    backdrop-filter:blur(4px);
 }
+
+/* =========================
+   BADGE
+========================= */
+
+.badge{
+
+    position:absolute;
+    top:12px;
+    right:12px;
+
+    font-size:0.7rem;
+
+    background:linear-gradient(135deg,#fbbf24,#f59e0b);
+
+    color:black;
+
+    padding:4px 9px;
+
+    border-radius:20px;
+
+    font-weight:700;
+
+    box-shadow:0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width:768px){
+
+.header-container h1{
+    font-size:1.8rem;
+}
+
+.container{
+    gap:22px;
+}
+
+}
+
+@media (max-width:480px){
+
+.card{
+    padding:30px 18px;
+    font-size:1rem;
+}
+
+}
+
+/* =========================
+   SECCIÓN INFERIOR FUTURISTA
+========================= */
+
+.bottom-section{
+
+    position:relative;
+
+    background:linear-gradient(135deg,#f59e0b,#ea580c,#fb923c);
+
+    margin-top:90px;
+
+    padding:80px 20px;
+
+    overflow:hidden;
+}
+
+/* aura energética */
+.bottom-section::before{
+
+    content:"";
+
+    position:absolute;
+    inset:-50%;
+
+    background:
+        radial-gradient(circle at 20% 30%,rgba(255,255,255,0.25),transparent 40%),
+        radial-gradient(circle at 80% 70%,rgba(255,255,255,0.25),transparent 40%);
+
+    filter:blur(90px);
+
+    animation:energyWave 14s linear infinite;
+}
+
+@keyframes energyWave{
+    from{transform:rotate(0deg)}
+    to{transform:rotate(360deg)}
+}
+
+/* =========================
+   CONTENIDO
+========================= */
 
 .bottom-content{
+
+    position:relative;
+
     max-width:1100px;
+
     margin:auto;
+
     display:flex;
+
     align-items:center;
-    gap:40px;
+
+    gap:50px;
+
     flex-wrap:wrap;
+
+    justify-content:center;
+
+    z-index:1;
 }
 
-/* Imagen más pequeña */
+/* =========================
+   IMAGEN
+========================= */
+
 .bottom-content img{
-    width:300px;
+
+    width:320px;
+
     max-width:100%;
-    border-radius:20px;
-    box-shadow:0 15px 35px rgba(0,0,0,0.25);
+
+    border-radius:24px;
+
+    box-shadow:
+        0 18px 40px rgba(0,0,0,0.35),
+        0 0 25px rgba(255,255,255,0.2);
+
+    transition:.35s ease;
 }
 
-/* Texto a la derecha */
+/* animación hover */
+.bottom-content img:hover{
+
+    transform:scale(1.05) rotate(-1deg);
+
+    box-shadow:
+        0 25px 50px rgba(0,0,0,0.45),
+        0 0 35px rgba(255,255,255,0.35);
+}
+
+/* =========================
+   TEXTO
+========================= */
+
 .bottom-text{
+
     flex:1;
+
+    min-width:280px;
+
     color:white;
 }
 
 .bottom-text h2{
-    font-size:1.8rem;
-    margin-bottom:15px;
+
+    font-size:2rem;
+
+    margin-bottom:18px;
+
+    letter-spacing:.5px;
+
+    text-shadow:0 4px 20px rgba(0,0,0,0.35);
 }
 
 .bottom-text p{
-    font-size:1.1rem;
-    line-height:1.6;
-    opacity:0.95;
+
+    font-size:1.15rem;
+
+    line-height:1.7;
+
+    opacity:.95;
+
+    max-width:520px;
 }
 
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width:900px){
+
+.bottom-content{
+
+    flex-direction:column;
+
+    text-align:center;
+
+}
+
+.bottom-content img{
+
+    width:260px;
+
+}
+
+.bottom-text h2{
+
+    font-size:1.7rem;
+
+}
+
+.bottom-text p{
+
+    font-size:1.05rem;
+
+}
+
+}
+
+@media (max-width:480px){
+
+.bottom-section{
+
+    padding:60px 20px;
+
+}
+
+.bottom-text h2{
+
+    font-size:1.5rem;
+
+}
+
+.bottom-text p{
+
+    font-size:1rem;
+
+}
+
+.bottom-content img{
+
+    width:220px;
+
+}
+
+}
 </style>
 </head>
 <body>
 
 <div class="theme-toggle" onclick="toggleMode()" id="themeIcon">🌙</div>
 
-<div class="top-image">
-    <img src="https://i.ibb.co/44DDXyB/Dise-o-sin-t-tulo-17.png" alt="Logo Plataforma">
-</div>
-
 <div class="top-access">
-    <button onclick="unlockNeuro()">🧠 Acceso NEUROELITE</button>
+    <p class="access-text">🔑 Ingresa tu clave para desbloquear contenido NEUROELITE</p>
+    <button class="access-btn" onclick="unlockNeuro()">
+        🔐 Introducir clave NEUROELITE
+    </button>
 </div>
 
 <div class="header-container">
@@ -277,7 +691,7 @@ body.dark .container::before{
     <div class="card neuroelite locked"><span class="badge">NEUROELITE</span><a href="https://revistacps.github.io/Traducci-nA.4/">Traducción 5</a></div>
     <div class="card neuroelite locked"><span class="badge">NEUROELITE</span><a href="https://revistacps.github.io/Traducci-n-A.5/">Traducción 6</a></div>
     <div class="card neuroelite locked"><span class="badge">NEUROELITE</span><a href="https://revistacps.github.io/Traducci-n-BM3.1/">Traducción 7</a></div>
-    <div class="card free">Más próximamente aquí...<p>"NEUROELITE"</p></a></div>
+    <div class="card free">Más próximamente aquí...<p>"NEUROELITE"</p></div>
 </div>
 
 <!-- SECCIÓN INFERIOR -->
